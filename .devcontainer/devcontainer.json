@@ -1,0 +1,16 @@
+{
+  "name": "Java",
+  "image": "mcr.microsoft.com/devcontainers/java:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-dependency",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "GitHub.copilot@prerelease",
+        "GitHub.copilot-chat@prerelease"
+      ]
+    }
+  }
+}
