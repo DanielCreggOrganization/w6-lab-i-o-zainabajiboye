@@ -8,7 +8,7 @@
 4. [Writing with Output Streams](#4-writing-with-output-streams)
 5. [Character-based I/O with Readers and Writers](#5-character-based-io-with-readers-and-writers)
 6. [Buffered I/O Operations](#6-buffered-io-operations)
-7. [Introduction to File I/O with Streams](#7-Introduction-to-File-I/O-with-Streams)
+7. [Introduction to File I/O with Streams](#7-introduction-to-file-io-with-streams)
 
 ## 1. Project Setup
 
