@@ -37,10 +37,10 @@ Creating a well-structured project is the first step in Java development. It hel
 ### Code Example
 
 ```java
-// File: src/com/example/iolab/IOLabMain.java
+// File: src/com/example/iolab/Main.java
 package com.example.iolab;
 
-public class IOLabMain {
+public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, Java I/O!");
     }
@@ -134,7 +134,7 @@ graph TD
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class IOLabMain {
+public class Main {
     public static void main(String[] args) {
         String filePath = "resources/input.txt";
         
@@ -183,7 +183,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class IOLabMain {
+public class Main {
     public static void main(String[] args) {
         String inputPath = "resources/input.txt";
         String outputPath = "resources/output.txt";
@@ -237,7 +237,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class IOLabMain {
+public class Main {
     public static void main(String[] args) {
         String inputPath = "resources/input.txt";
         String outputPath = "resources/output.txt";
@@ -293,7 +293,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class IOLabMain {
+public class Main {
     public static void main(String[] args) {
         String inputPath = "resources/input.txt";
         String outputPath = "resources/output.txt";
