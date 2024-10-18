@@ -8,6 +8,7 @@
 4. [Writing with Output Streams](#4-writing-with-output-streams)
 5. [Character-based I/O with Readers and Writers](#5-character-based-io-with-readers-and-writers)
 6. [Buffered I/O Operations](#6-buffered-io-operations)
+7. [Introduction to File I/O with Streams](#7.-Introduction-to-File-I/O-with-Streams)
 
 ## 1. Project Setup
 
@@ -328,6 +329,102 @@ public class Main {
 2. Implement a word count feature that counts the number of words in the input file.
 3. Modify the program to write every other word in uppercase to the output file.
 4. Add a progress indicator that prints a dot to the console for every 100 words processed.
+[Previous sections of the lab remain unchanged]
+
+## 7. Introduction to File I/O with Streams
+
+### Concept Introduction: Java Streams and File I/O
+
+Java Streams, introduced in Java 8, provide a powerful and efficient way to process collections of data. When combined with file I/O operations, streams offer a modern and flexible approach to reading and processing file contents.
+
+```mermaid
+graph TD
+    A[File] --> B[Files.lines()]
+    B --> C[Stream of Strings]
+    C --> D[Filter]
+    C --> E[Map]
+    C --> F[Collect]
+    D --> G[Processed Data]
+    E --> G
+    F --> G
+```
+
+### Explanation
+
+Java Streams allow us to process data in a declarative way, similar to SQL queries. When working with files, the `Files.lines()` method provides a convenient way to read a file line by line, returning a `Stream<String>`. This stream can then be processed using various operations like filtering, mapping, and collecting.
+
+Key benefits of using streams for file I/O include:
+1. Lazy evaluation: Streams process data on-demand, which can be more memory-efficient for large files.
+2. Parallel processing: Streams can easily be parallelized for improved performance on multi-core systems.
+3. Functional programming style: Streams encourage a more declarative and often more readable code style.
+
+### Code Example
+
+Let's look at a simple example that reads a file using streams and performs some basic operations:
+
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+public class Main {
+    public static void main(String[] args) {
+        String inputPath = "resources/input.txt";
+
+        // Reading and counting lines
+        try (Stream<String> lines = Files.lines(Paths.get(inputPath))) {
+            long lineCount = lines.count();
+            System.out.println("Number of lines: " + lineCount);
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+
+        // Reading and processing each line
+        try (Stream<String> lines = Files.lines(Paths.get(inputPath))) {
+            lines.forEach(line -> System.out.println("Line: " + line));
+        } catch (IOException e) {
+            System.err.println("Error processing file: " + e.getMessage());
+        }
+
+        // Filtering lines
+        try (Stream<String> lines = Files.lines(Paths.get(inputPath))) {
+            long nonEmptyLines = lines
+                .filter(line -> !line.trim().isEmpty())
+                .count();
+            System.out.println("Non-empty lines: " + nonEmptyLines);
+        } catch (IOException e) {
+            System.err.println("Error processing file: " + e.getMessage());
+        }
+    }
+}
+```
+
+Let's break down this example:
+
+1. `Files.lines(Paths.get(inputPath))`: This method reads the file and returns a Stream<String>, where each element is a line from the file.
+
+2. `lines.count()`: This operation counts the number of lines in the file. It's a terminal operation, meaning it processes the entire stream and produces a result.
+
+3. `lines.forEach(line -> ...)`: This operation processes each line individually. It's useful for performing actions on each line, like printing or more complex processing.
+
+4. `lines.filter(line -> !line.trim().isEmpty()).count()`: This chain of operations filters out empty lines and then counts the remaining lines. It demonstrates how we can combine stream operations for more complex processing.
+
+Note that we're using try-with-resources for each stream operation. This ensures that the file is properly closed after we're done processing it.
+
+### DIY Task
+
+1. Modify the example to count the number of words in the file. (Hint: You'll need to split each line into words.)
+
+2. Implement a filter to count lines that contain a specific word of your choice.
+
+3. Use streams to find the longest line in the file.
+
+4. Create a simple word frequency counter that prints out the top 5 most common words in the file.
+
+5. Bonus: Use `Files.list()` to get a stream of all text files in the resources directory, then process each file to count its lines.
+
+These tasks will help you get familiar with basic stream operations in the context of file I/O. Remember, streams are a powerful tool for data processing, and mastering them will greatly enhance your Java programming skills.
 
 ---
 End of Lab
