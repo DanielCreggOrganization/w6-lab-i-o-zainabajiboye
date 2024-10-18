@@ -50,10 +50,10 @@ public class IOLabMain {
 ### DIY Task
 
 Create the project structure as follows:
-1. Create a new Java project named "JavaIOLab".
-2. Inside the project, create a package named "com.example.iolab".
-3. In this package, create a main class named "IOLabMain".
-4. Add a `main` method to `IOLabMain` and print "Hello, Java I/O!" to the console.
+1. Create a folder named `resources` in your project root (i.e. at the same level as the `src` folder (NOT inside the `src` folder))
+2. Create a package named "com.example.iolab".
+3. In this package, create a class named `Main`.
+4. Add a `main` method to the `Main` class and print "Hello, Java I/O!" to the console.
 5. Run the program to ensure it works correctly.
 
 ## 2. Creating and Locating Files
@@ -105,11 +105,10 @@ public class IOLabMain {
 
 ### DIY Task
 
-1. Create a folder named "resources" in your project root.
-2. Create a new text file named "input.txt" in the resources folder.
-3. Open input.txt and type the following text: "Hello, Java I/O! This is a test file.", then save and close the file.
-4. Modify your `main` method to print the absolute path of "input.txt" using the code example above.
-5. Add error handling to your code to gracefully handle the case where the file doesn't exist.
+1. Create a new text file named "input.txt" and put it in the resources folder.
+2. Open input.txt and type the following text: "Hello, Java I/O! This is a test file.", then save and close the file.
+3. Modify your `main` method to print the absolute path of "input.txt" using the code example above.
+4. Add error handling to your code to gracefully handle the case where the file doesn't exist.
 
 ## 3. Reading with Input Streams
 
