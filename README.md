@@ -120,7 +120,6 @@ Input streams in Java are used to read data from a source, such as a file, netwo
 graph TD
     A[InputStream] --> B[FileInputStream]
     A --> C[ByteArrayInputStream]
-    A --> D[Other specialized streams...]
     B --> E[Read from files]
     C --> F[Read from memory]
 ```
