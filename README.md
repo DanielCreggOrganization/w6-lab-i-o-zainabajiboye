@@ -49,7 +49,7 @@ public class Main {
 ### DIY Task
 
 Create the project structure as follows:
-1. Create a folder named `resources` in your project root (i.e. at the same level as the `src` folder (NOT inside the `src` folder))
+1. Create a folder named `resources` in your project root (i.e., at the same level as the `src` folder (NOT inside the `src` folder))
 2. Create a package named "com.example.iolab".
 3. In this package, create a class named `Main`.
 4. Add a `main` method to the `Main` class and print "Hello, Java I/O!" to the console.
@@ -74,27 +74,26 @@ graph LR
 
 ### Explanation
 
-In Java, you can create files programmatically or manually. The `File` class from `java.io` or the `Path` interface from `java.nio.file` can be used to represent file and directory pathnames. In this lab, we'll create a file manually and use Java to locate it.
+In Java, you can create files programmatically or manually. The `Path` interface from `java.nio.file` is the modern way to represent file and directory pathnames. In this lab, we'll create a file manually and use Java to locate it.
 
 ### Code Example
 
 ```java
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 
 public class Main {
     public static void main(String[] args) {
         // Get the project's root directory
-        String projectRoot = System.getProperty("user.dir");
+        Path projectRoot = Paths.get(System.getProperty("user.dir"));
         
         // Construct the path to input.txt
-        String inputFilePath = projectRoot + File.separator + "resources" + File.separator + "input.txt";
-        
-        // Create a File object
-        File inputFile = new File(inputFilePath);
+        Path inputFilePath = projectRoot.resolve("resources").resolve("input.txt");
         
         // Check if the file exists
-        if (inputFile.exists()) {
-            System.out.println("input.txt found at: " + inputFile.getAbsolutePath());
+        if (Files.exists(inputFilePath)) {
+            System.out.println("input.txt found at: " + inputFilePath.toAbsolutePath());
         } else {
             System.out.println("input.txt not found!");
         }
@@ -127,7 +126,7 @@ graph TD
 
 `FileInputStream` is a concrete implementation of `InputStream` used specifically for reading bytes from files. It's useful for reading binary data or when you need low-level control over reading operations.
 
-### Code Example
+### Code Example (using try-catch-finally)
 
 ```java
 import java.io.FileInputStream;
@@ -136,14 +135,24 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         String filePath = "resources/input.txt";
+        FileInputStream fis = null;
         
-        try (FileInputStream fis = new FileInputStream(filePath)) {
+        try {
+            fis = new FileInputStream(filePath);
             int data;
             while ((data = fis.read()) != -1) {
                 System.out.print((char) data);
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+            } catch (IOException e) {
+                System.err.println("Error closing file: " + e.getMessage());
+            }
         }
     }
 }
@@ -151,7 +160,7 @@ public class Main {
 
 ### DIY Task
 
-1. Implement the code to read from "input.txt" using `FileInputStream`.
+1. Implement the code to read from "input.txt" using `FileInputStream` with try-catch-finally.
 2. Modify the code to count the number of characters in the file.
 3. Add error handling for potential `FileNotFoundException` and `IOException`.
 4. Print both the content of the file and the character count to the console.
@@ -175,7 +184,7 @@ graph TD
 
 `FileOutputStream` is a concrete implementation of `OutputStream` used for writing bytes to files. It can create a new file or append to an existing file, making it versatile for various writing operations.
 
-### Code Example
+### Code Example (introducing try-with-resources)
 
 ```java
 import java.io.FileInputStream;
@@ -204,10 +213,10 @@ public class Main {
 
 ### DIY Task
 
-1. Implement the code to copy the content from "input.txt" to a new file "output.txt" using `FileInputStream` and `FileOutputStream`.
+1. Implement the code to copy the content from "input.txt" to a new file "output.txt" using `FileInputStream` and `FileOutputStream` with try-with-resources.
 2. Modify the code to append to "output.txt" instead of overwriting it.
 3. Add a feature to convert all text to uppercase when writing to the output file.
-4. Implement proper resource management using try-with-resources for both input and output streams.
+4. Compare this implementation with the previous try-catch-finally approach and note the benefits of try-with-resources.
 
 ## 5. Character-based I/O with Readers and Writers
 
@@ -261,7 +270,7 @@ public class Main {
 1. Modify your previous code to use `FileReader` and `FileWriter` instead of `FileInputStream` and `FileOutputStream`.
 2. Implement a feature to count the number of vowels in the input file.
 3. Write a summary at the end of the output file that includes the total character count and vowel count.
-4. Add proper exception handling and resource management.
+4. Add proper exception handling and resource management using try-with-resources.
 
 ## 6. Buffered I/O Operations
 
@@ -319,5 +328,6 @@ public class Main {
 2. Implement a word count feature that counts the number of words in the input file.
 3. Modify the program to write every other word in uppercase to the output file.
 4. Add a progress indicator that prints a dot to the console for every 100 words processed.
+
 ---
 End of Lab
