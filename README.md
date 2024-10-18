@@ -339,12 +339,12 @@ Java Streams, introduced in Java 8, provide a powerful and efficient way to proc
 
 ```mermaid
 graph TD
-    A[File] --> B[Files.lines()]
-    B --> C[Stream of Strings]
+    A[File] --> B["Files.lines()"]
+    B --> C["Stream of Strings"]
     C --> D[Filter]
     C --> E[Map]
     C --> F[Collect]
-    D --> G[Processed Data]
+    D --> G["Processed Data"]
     E --> G
     F --> G
 ```
