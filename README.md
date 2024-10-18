@@ -320,37 +320,5 @@ public class Main {
 2. Implement a word count feature that counts the number of words in the input file.
 3. Modify the program to write every other word in uppercase to the output file.
 4. Add a progress indicator that prints a dot to the console for every 100 words processed.
-
-## Final Project
-
-Now that you've learned about various I/O operations in Java, your final project will integrate all these concepts into a cohesive application.
-
-### Project Requirements
-
-Create a Java application that does the following:
-
-1. Reads text from an input file using buffered character streams.
-2. Processes the text to gather the following statistics:
-   - Total character count
-   - Word count
-   - Line count
-   - Vowel count
-3. Writes the processed text to an output file with the following modifications:
-   - Convert all text to title case (first letter of each word capitalized)
-   - Replace all numeric digits with their word equivalents (e.g., "1" becomes "one")
-4. Appends a summary of the statistics to the end of the output file.
-5. Implements proper error handling and resource management.
-6. Provides a simple console-based user interface to:
-   - Specify input and output file paths
-   - Display processing progress
-   - Show file statistics after processing
-
-### Bonus Challenge
-
-Extend your application with one or more of the following features:
-
-- Implement a simple text encryption/decryption feature.
-- Add support for processing multiple files in a directory.
-- Create a basic search functionality to find and highlight specific words or phrases in the processed text.
-
-This final project will help you apply all the I/O concepts you've learned in a practical, real-world scenario. Good luck!
+---
+End of Lab
