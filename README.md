@@ -82,7 +82,7 @@ In Java, you can create files programmatically or manually. The `File` class fro
 ```java
 import java.io.File;
 
-public class IOLabMain {
+public class Main {
     public static void main(String[] args) {
         // Get the project's root directory
         String projectRoot = System.getProperty("user.dir");
