@@ -1,4 +1,4 @@
-# Java I/O Lab: File Operations and Streams
+# Java I/O Lab
 
 ## Agenda
 
