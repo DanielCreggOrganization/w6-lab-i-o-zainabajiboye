@@ -1,3 +1,5 @@
+package ie.atu.testpackage;
+
 class HelloWorld
 {
     public static void main(String []args)
