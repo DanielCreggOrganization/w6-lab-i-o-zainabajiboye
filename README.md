@@ -26,8 +26,8 @@ graph TD
     A --> C[resources folder]
     B --> D[packages]
     D --> E[classes]
-    C --> F[configuration files]
-    C --> G[static resources]
+    C --> F[data files]
+    C --> G[images]
 ```
 
 ### Explanation
